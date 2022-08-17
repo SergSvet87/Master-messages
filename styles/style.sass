@@ -1,0 +1,570 @@
+@import '../styles/scss/normalize.scss'
+@import '../styles/scss/reset.scss'
+
+@font-face
+  font-family: "Circe"
+  src: url(../fonts/Circe-Bold.ttf) format("truetype")
+  font-style: normal
+  font-weight: 700
+
+@font-face
+  font-family: "Circe"
+  src: url(../fonts/Circe-Bold.woff) format("opentype")
+  font-style: normal
+  font-weight: 700
+
+@font-face
+  font-family: "Circe"
+  src: url(../fonts/Circe-Regular.ttf) format("truetype")
+  font-style: normal
+  font-weight: 400
+
+@font-face
+  font-family: "Circe"
+  src: url(../fonts/Circe-Regular.woff) format("opentype")
+  font-style: normal
+  font-weight: 400
+
+@mixin color($color)
+  color: $color
+
+*
+  box-sizing: border-box
+
+$main-bg: #151515
+$main-color: #fff
+$accent-color: #DB9351
+$text-color: #959595
+$border-color: #242424
+$sidebar-bg: #1d1c1c
+
+body
+  font-family: "Circe", sans-serif
+  font-style: normal
+  font-weight: 400
+  font-size: 16px
+  line-height: 1.38
+  letter-spacing: 0.03em
+  @include color($main-color)
+  background-color: $main-bg
+
+.container
+  max-width: 1088px
+  width: 100%
+  margin: 0 auto
+
+/* Main start */
+.main
+  display: flex
+  flex-direction: row
+  padding-top: 35px
+  padding-bottom: 100px
+
+// Боковая панель
+.sidebar
+  max-width: 220px
+  background-color: $sidebar-bg
+  margin-right: 57px
+  &__menu-mobile
+    display: none
+  &__avatar
+    width: 100%
+    position: relative
+    &-img
+      width: 220px
+      height: 293px
+      background: url(../images/jpg/avatar.jpg) center center/cover no-repeat
+      border: 1px solid $accent-color
+    &-mark
+      position: absolute
+      top: 18px
+      left: 20px
+  &__message-counter,
+  &__profile,
+  &__settings
+    height: 126px
+    display: flex
+    align-items: center
+    padding-left: 30px
+    border-bottom: 1px solid $border-color
+  &__profile
+    height: 185px
+  &__message-counter a,
+  &__profile a,
+  &__settings a
+    color: $main-color
+    text-decoration: none
+    &:hover
+      text-decoration: underline
+  &__message-counter.active a
+    @include color($accent-color)
+  &__message-counter span
+    margin-left: 61px
+  &__settings
+    height: 147px
+    border-bottom: none
+  &__button
+    width: 100%
+    height: 125px
+    background-color: $accent-color
+    button
+      width: 100%
+      height: 100%
+      background-color: transparent
+      font-weight: 700
+      letter-spacing: 0.05em
+      @include color($main-color)
+      border: none
+      cursor: pointer
+      &:hover
+        @include color($accent-color)
+        background-color: #ffc997
+
+.list
+  align-items: center
+  &__item
+    margin-bottom: 22px
+
+// Основной контент
+.messages
+  width: 100%
+  &__table
+    width: 100%
+
+// Лист с сообщениями
+.table
+  &__menu-mobile
+    display: none
+  &__head,
+  &__foot
+    display: flex
+  li
+    cursor: pointer
+    &:hover
+      text-decoration: underline
+
+// Шапка списка сообщений
+.head
+  height: 47px
+  align-items: flex-start
+  border-bottom: 1px solid $border-color
+  font-size: 14px
+  &__remove
+    @include color(#FF5B5C)
+    margin-right: 16px
+    padding-top: 7px
+  &__add
+    margin-right: 87px
+    padding-top: 7px
+  &__unread
+    @include color($accent-color)
+    padding-top: 7px
+  &__archive
+    @include color($text-color)
+    margin-left: 16px
+    margin-right: 207px
+    padding-top: 7px
+  &__search input
+    width: 168px
+    height: 30px
+    background: transparent
+    border: 1px solid $accent-color
+    padding: 0
+    margin: 0
+    padding-left: 97px
+  &__input::placeholder
+    @include color($accent-color)
+
+// Список сообщений
+.body
+  align-items: center
+  &__tr
+    border-bottom: 1px solid $border-color
+    height: 59px
+    display: flex
+    flex-direction: row
+    align-items: center
+    flex-wrap: nowrap
+    cursor: pointer
+    &:active,
+    &:hover
+      border-top: 1px solid $accent-color
+      border-bottom: 1px solid $accent-color
+  &__checkbox_inactive,
+  &__checkbox_active
+    display: inline-flex
+    justify-content: center
+    align-items: center
+    width: 16px
+    height: 16px
+    border: 1px solid $main-color
+    margin-right: 4px
+  &__avatar
+    position: relative
+    margin-right: 1px
+    svg
+      height: 60px
+  &__avatar span.active
+    position: absolute
+    top: 15px
+    right: 15px
+    width: 8px
+    height: 8px
+    background-color: #ABDB51
+    border-radius: 50%
+  &__name
+    width: 143px
+    overflow: hidden
+    white-space: nowrap
+    text-overflow: ellipsis
+    margin-right: 10px
+    a
+      font-weight: 700
+      letter-spacing: 0.04em
+      @include color($main-color)
+    a:hover
+      text-decoration: none
+  &__block
+    width: 17px
+    margin-right: 14px
+    visibility: hidden
+  &__block.active
+    visibility: visible
+  &__text
+    min-width: 373px
+    margin-right: 27px
+    overflow: hidden
+  &__text.inactive,
+  &__date.inactive,
+  &__time.inactive
+    @include color($text-color)
+  &__date
+    margin-right: 19px
+
+// пагинация с сообщениями
+.foot
+  padding-top: 50px
+  justify-content: flex-end
+  &__counter
+    width: 23px
+    height: 23px
+    margin-right: 12px
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    &:last-child
+      width: 54px
+      margin-right: 0
+    a
+      font-weight: 700
+      font-size: 14px
+      @include color($main-color)
+      text-decoration: none
+    &.active
+      border-radius: 50%
+      border: 1px solid $accent-color
+      a
+        @include color($accent-color)
+    &:hover
+      text-decoration: underline
+    >a:hover
+      @include color($accent-color)
+/* Main end */
+
+// Media
+@media screen and (max-width: 1121px)
+  .container
+    max-width: 1080px
+  .messages__table
+    width: 95%
+  .head__archive
+    margin-right: 195px
+  .head__add
+    margin-right: 50px
+
+@media screen and (max-width: 1080px)
+  .messages__table
+    width: 90%
+  .head__add
+    margin-right: 15px
+
+@media screen and (max-width: 1041px)
+  .container
+    max-width: 1040px
+  .messages__table
+    width: 85%
+  .head__archive
+    margin-right: 120px
+  .body__text
+    min-width: 260px
+    margin-right: 15px
+
+@media screen and (max-width: 931px)
+  .container
+    max-width: 930px
+    padding: 20px
+  .sidebar
+    max-width: 200px
+    margin-right: 20px
+  .sidebar__message-counter,
+  .sidebar__profile,
+  .sidebar__settings
+    padding: 0
+    justify-content: center
+    text-align: center
+  .sidebar__avatar-img
+    max-width: 200px
+  .sidebar__message-counter span
+    margin-left: 5px
+  .messages__table
+    width: 80%
+  .head__archive
+    margin-right: 50px
+  .body__text
+    min-width: 200px
+
+@media screen and (max-width: 801px)
+  .container
+    max-width: 800px
+  .sidebar
+    max-width: 170px
+    margin-right: 10px
+  .sidebar__avatar-img
+    max-width: 170px
+  .head__archive
+    margin-right: 10px
+  .foot
+    overflow: hidden
+    white-space: nowrap
+    text-overflow: ellipsis
+
+@media screen and (max-width: 741px)
+  .container
+    max-width: 740px
+  .main
+    flex-direction: column
+  .sidebar
+    max-width: 100%
+    height: 150px
+    margin: 0 0 50px
+    &__desktop
+      display: flex
+      flex-direction: row
+      justify-content: center
+      align-items: center
+    &__avatar
+      max-width: 170px
+      margin-right: 15px
+    &__avatar-img
+      max-width: 170px
+      height: 150px
+      border-radius: 20px
+    &__button
+      width: 150px
+      height: 150px
+  .sidebar__message-counter,
+  .sidebar__profile,
+  .sidebar__settings
+    height: 100%
+    margin-right: 20px
+    border-bottom: none
+  .messages__table
+    width: 100%
+  .head__archive
+    margin-right: 100px
+  .body__text
+    min-width: 265px
+
+@media screen and (max-width: 651px)
+  .container
+    max-width: 650px
+    padding: 20px
+  .sidebar
+    &__desktop
+      display: none
+    &__menu-mobile
+      display: flex
+      flex-direction: row
+      height: 100px
+
+  .menu-mobile
+    width: 100%
+    height: 100%
+    justify-content: space-between
+    align-items: center
+    &__burger
+      display: block
+      overflow: hidden
+      margin: 0
+      padding: 0
+      width: 70px
+      height: 70px
+      font-size: 0
+      background-color: transparent
+      border-radius: 5px
+      position: relative
+      cursor: pointer
+      span
+        display: block
+        position: absolute
+        background-color: #fff
+        height: 5px
+        width: 70px
+        top: 34px
+        left: 1px
+        transition: background 0s 0.3s
+      span::after,
+      span::before
+        content: ""
+        display: block
+        width: 100%
+        height: 5px
+        background-color: #fff
+        position: absolute
+        transition-duration: 0.3s, 0.3s
+        transition-delay: 0.3s, 0s
+      span::after
+        top: -20px
+      span::before
+        bottom: -20px
+    &__burger.close span
+      background: none
+    &__burger.close span::after
+      top: 0px
+      transform: rotate(45deg)
+    &__burger.close span::before
+      bottom: 0px
+      transform: rotate(-45deg)
+  .messages__table
+    width: 100%
+  .head__archive
+    margin-right: 40px
+  .body__text
+    min-width: 175px
+
+@media screen and (max-width: 551px)
+  .container
+    max-width: 550px
+  .messages__table
+    width: 100%
+  .head__archive
+    margin-right: 30px
+  .head__search input
+    width: 88px
+    padding-left: 10px
+  .body__tr
+    height: 100px
+  .body__text
+    min-width: 95px
+
+@media screen and (max-width: 481px)
+  .container
+    max-width: 480px
+  .sidebar
+    height: 60px
+    &__menu-mobile
+      height: 100%
+    &__avatar
+      width: 60px
+      margin: 0
+    &__avatar-img
+      width: 60px
+      height: 60px
+      border-radius: 50%
+    &__avatar-mark
+      display: none
+    &__button
+      width: 100px
+      height: 60px
+
+  .menu-mobile__burger
+    width: 60px
+    height: 60px
+    span
+      width: 50px
+      top: 25px
+
+  .table
+    width: 100%
+    &__head
+      display: none
+    &__menu-mobile
+      width: 100%
+      height: 60px
+      margin-bottom: 20px
+
+  .burger
+    display: flex
+    justify-content: space-between
+    align-items: center
+    &__inner
+      width: 100%
+      display: flex
+      justify-content: space-between
+      align-items: center
+    &__menu
+      display: block
+      overflow: hidden
+      margin: 0
+      padding: 0
+      width: 60px
+      height: 60px
+      font-size: 0
+      background-color: transparent
+      border-radius: 5px
+      position: relative
+      cursor: pointer
+      span
+        display: block
+        position: absolute
+        background-color: #fff
+        height: 4px
+        width: 30px
+        top: 18px
+        left: 5px
+        right: 5px
+        transition: background 0s 0.3s
+      span::after,
+      span::before
+        content: ""
+        display: block
+        width: 100%
+        height: 4px
+        background-color: #fff
+        position: absolute
+        transition-duration: 0.3s, 0.3s
+        transition-delay: 0.3s, 0s
+      span::after
+        top: -10px
+      span::before
+        bottom: -10px
+    &__head-mobile
+      display: none
+      text-align: center
+      li
+        padding: 10px 0
+  .head__search
+    height: 60px
+    input
+      width: 250px
+      height: 40px
+      padding-left: 20px
+  .body__checkbox_inactive, .body__checkbox_active, .body__name, .body__block
+    display: none
+
+@media screen and (max-width: 381px)
+  .container
+    max-width: 380px
+    padding: 15px
+  .body__avatar svg
+    width: 50px
+    height: 40px
+  .body__date
+    display: none
+  .head__search input
+    width: 170px
+  .body__avatar span.active
+    top: 7px
+    right: 10px
+  .body__text
+    min-width: 200px

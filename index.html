@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="html, css, javascript, svitlychnyi, serhii, messages, message"
+    />
+    <meta
+      name="description"
+      content="Это почтовый ящик пользователя с просмотром писем, которые можно удалить, добавить в избранное или архив."
+    />
+    <meta name="author" content="Світличний Сергій" />
+    <title>Messages</title>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <!-- Main start -->
+    <main class="main container">
+      <section class="sidebar">
+        <div class="sidebar__desktop">
+          <div class="sidebar__avatar">
+            <div class="sidebar__avatar-img"></div>
+            <div class="sidebar__avatar-mark">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="19.095"
+                height="13.438"
+                viewBox="0 0 19.095 13.438"
+              >
+                <path
+                  id="Объединение_61"
+                  data-name="Объединение 61"
+                  d="M16316.241,20760.2l-7.07-7.07,1.417-1.418,5.655,5.656,10.605-10.605,1.417,1.412Z"
+                  transform="translate(-16309.171 -20746.758)"
+                  fill="#abdb51"
+                />
+              </svg>
+            </div>
+          </div>
+          <!-- ./avatar -->
+          <div class="sidebar__message-counter active">
+            <a href="#">Сообщения <span>3</span></a>
+          </div>
+          <!-- ./message-counter -->
+          <div class="sidebar__profile">
+            <ul class="sidebar__profile-list list">
+              <li class="list__item"><a href="#">Профиль</a></li>
+              <li class="list__item"><a href="#">Настройки</a></li>
+            </ul>
+          </div>
+          <!-- /.sidebar__profile -->
+          <div class="sidebar__settings">
+            <ul class="sidebar__settings-list list">
+              <li class="list__item"><a href="#">Вопросы</a></li>
+              <li class="list__item"><a href="#">Написать модератору</a></li>
+            </ul>
+          </div>
+          <!-- /.sidebar__settings -->
+
+          <div class="sidebar__button">
+            <button>Купить подписку</button>
+          </div>
+          <!-- /.sidebar__button -->
+        </div>
+
+        <!-- Адаптив -->
+        <div class="sidebar__menu-mobile menu-mobile">
+          <div class="sidebar__avatar">
+            <div class="sidebar__avatar-img"></div>
+            <div class="sidebar__avatar-mark">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="19.095"
+                height="13.438"
+                viewBox="0 0 19.095 13.438"
+              >
+                <path
+                  id="Объединение_61"
+                  data-name="Объединение 61"
+                  d="M16316.241,20760.2l-7.07-7.07,1.417-1.418,5.655,5.656,10.605-10.605,1.417,1.412Z"
+                  transform="translate(-16309.171 -20746.758)"
+                  fill="#abdb51"
+                />
+              </svg>
+            </div>
+          </div>
+          <!-- ./avatar -->
+          <div class="menu-mobile__burger">
+            <span>toggle menu</span>
+            <nav class="menu-mobile__inner">
+              <ul class="menu-mobile__list list">
+                <li class="list__item">
+                  <a href="#">Сообщения <span>3</span></a>
+                </li>
+                <li class="list__item"><a href="#">Профиль</a></li>
+                <li class="list__item"><a href="#">Настройки</a></li>
+                <li class="list__item"><a href="#">Вопросы</a></li>
+                <li class="list__item"><a href="#">Написать модератору</a></li>
+              </ul>
+            </nav>
+          </div>
+          <!-- ./burger -->
+          <div class="sidebar__button">
+            <button>Купить подписку</button>
+          </div>
+          <!-- /.sidebar__profile -->
+        </div>
+        <!-- ./menu-burger -->
+      </section>
+      <!-- ./sidebar -->
+
+      <section class="messages">
+        <div class="messages__table table">
+          <ul class="table__head head">
+            <li class="head__remove">Удалить</li>
+            <li class="head__add">Добавить в архив</li>
+            <li class="head__unread">Непрочитанные</li>
+            <li class="head__archive">Архив</li>
+            <li class="head__search">
+              <input
+                class="head__input"
+                type="search"
+                name="search"
+                placeholder="Искать →"
+                id="search"
+              />
+            </li>
+          </ul>
+          <!-- ./table__head -->
+
+          <!--  -->
+          <div class="table__menu-mobile burger">
+            <div class="burger__inner">
+              <div class="burger__menu"><span>toggle menu</span></div>
+              <div class="head__search">
+                <input
+                  class="head__input"
+                  type="search"
+                  name="search"
+                  placeholder="Искать →"
+                  id="search"
+                />
+              </div>
+            </div>
+                    
+            <nav class="burger__nav">              
+              <ul class="burger__head-mobile head-mobile">
+                <li class="head__remove">Удалить</li>
+                <li class="head__add">Добавить в архив</li>
+                <li class="head__unread">Непрочитанные</li>
+                <li class="head__archive">Архив</li>
+              </ul>
+            </nav>            
+          </div>
+          <!-- ./table__menu-mobile -->
+          <ul class="table__body body">
+            <ul class="body__tr">
+              <li class="body__checkbox">
+                <div class="body__checkbox_inactive"></div>
+              </li>
+              <li class="body__avatar">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="70"
+                  height="70"
+                  viewBox="0 0 70 70"
+                >
+                  <defs>
+                    <filter
+                      id="Эллипс_150"
+                      x="0"
+                      y="0"
+                      width="70"
+                      height="70"
+                      filterUnits="userSpaceOnUse"
+                    >
+                      <feOffset input="SourceAlpha" />
+                      <feGaussianBlur stdDeviation="5" result="blur" />
+                      <feFlood flood-opacity="0.251" />
+                      <feComposite operator="in" in2="blur" />
+                      <feComposite in="SourceGraphic" />
+                    </filter>
+                  </defs>
+                  <g
+                    id="Сгруппировать_1738"
+                    data-name="Сгруппировать 1738"
+                    transform="translate(-1736 -4039)"
+                  >
+                    <g
+                      transform="matrix(1, 0, 0, 1, 1736, 4039)"
+                      filter="url(#Эллипс_150)"
+                    >
+                      <circle
+                        id="Эллипс_150-2"
+                        data-name="Эллипс 150"
+                        cx="20"
+                        cy="20"
+                        r="20"
+                        transform="translate(15 15)"
+                        fill="#fff"
+                        opacity="0.2"
+                      />
+                    </g>
+                    <path
+                      id="profile_1_"
+                      d="M10.943,8.558A4.834,4.834,0,0,0,12.7,4.083,4.831,4.831,0,0,0,8.546.088,4.671,4.671,0,0,0,3.193,4.8,4.954,4.954,0,0,0,4.951,8.558,7.6,7.6,0,0,0,0,15.109a.777.777,0,0,0,.8.879.85.85,0,0,0,.8-.719A6.057,6.057,0,0,1,7.987,9.6a6.105,6.105,0,0,1,6.392,5.673.788.788,0,0,0,.8.719.777.777,0,0,0,.8-.879A7.7,7.7,0,0,0,10.943,8.558ZM7.987,8a3.2,3.2,0,1,1,3.2-3.2A3.205,3.205,0,0,1,7.987,8Z"
+                      transform="translate(1763.012 4065.957)"
+                      fill="#fff"
+                    />
+                  </g>
+                </svg>
+                <span></span>
+              </li>
+              <li class="body__name"><a href="#">Александр Антоненко</a></li>
+              <li class="body__block active">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16.041"
+                  height="16"
+                  viewBox="0 0 16.041 16"
+                >
+                  <path
+                    id="shopping_x5F_cart_2_"
+                    d="M15.995,14.16l-1.12-8a1.568,1.568,0,0,0-1.6-1.36h-1.28V4a3.866,3.866,0,0,0-4-4,3.961,3.961,0,0,0-4,4v.8H2.955a1.9,1.9,0,0,0-1.84,1.36l-1.12,8A1.62,1.62,0,0,0,1.595,16h12.8A1.62,1.62,0,0,0,15.995,14.16ZM5.595,4a2.357,2.357,0,0,1,2.4-2.4,2.225,2.225,0,0,1,2.4,2.4v.8h-4.8Zm7.84,10.4H2.555a.778.778,0,0,1-.8-.88l.88-6.4a.851.851,0,0,1,.8-.72h.56V8a.756.756,0,0,0,.8.8.756.756,0,0,0,.8-.8V6.4h4.8V8a.8.8,0,1,0,1.6,0V6.4h.56a.851.851,0,0,1,.8.72l.88,6.4A.741.741,0,0,1,13.435,14.4Z"
+                    transform="translate(0.026)"
+                    fill="#db9351"
+                  />
+                </svg>
+              </li>
+              <li class="body__text inactive">
+                здравствуйте. как долго придется ждать нож кото
+              </li>
+              <li class="body__date inactive">13/04/2018</li>
+              <li class="body__time inactive">14:02</li>
+            </ul>
+            <!-- ./1 сообщение -->
+
+            <ul class="body__tr">
+              <li class="body__checkbox">
+                <div class="body__checkbox_inactive"></div>
+              </li>
+              <li class="body__avatar">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="70"
+                  height="70"
+                  viewBox="0 0 70 70"
+                >
+                  <defs>
+                    <filter
+                      id="Эллипс_150"
+                      x="0"
+                      y="0"
+                      width="70"
+                      height="70"
+                      filterUnits="userSpaceOnUse"
+                    >
+                      <feOffset input="SourceAlpha" />
+                      <feGaussianBlur stdDeviation="5" result="blur" />
+                      <feFlood flood-opacity="0.251" />
+                      <feComposite operator="in" in2="blur" />
+                      <feComposite in="SourceGraphic" />
+                    </filter>
+                  </defs>
+                  <g
+                    id="Сгруппировать_1738"
+                    data-name="Сгруппировать 1738"
+                    transform="translate(-1736 -4039)"
+                  >
+                    <g
+                      transform="matrix(1, 0, 0, 1, 1736, 4039)"
+                      filter="url(#Эллипс_150)"
+                    >
+                      <circle
+                        id="Эллипс_150-2"
+                        data-name="Эллипс 150"
+                        cx="20"
+                        cy="20"
+                        r="20"
+                        transform="translate(15 15)"
+                        fill="#fff"
+                        opacity="0.2"
+                      />
+                    </g>
+                    <path
+                      id="profile_1_"
+                      d="M10.943,8.558A4.834,4.834,0,0,0,12.7,4.083,4.831,4.831,0,0,0,8.546.088,4.671,4.671,0,0,0,3.193,4.8,4.954,4.954,0,0,0,4.951,8.558,7.6,7.6,0,0,0,0,15.109a.777.777,0,0,0,.8.879.85.85,0,0,0,.8-.719A6.057,6.057,0,0,1,7.987,9.6a6.105,6.105,0,0,1,6.392,5.673.788.788,0,0,0,.8.719.777.777,0,0,0,.8-.879A7.7,7.7,0,0,0,10.943,8.558ZM7.987,8a3.2,3.2,0,1,1,3.2-3.2A3.205,3.205,0,0,1,7.987,8Z"
+                      transform="translate(1763.012 4065.957)"
+                      fill="#fff"
+                    />
+                  </g>
+                </svg>
+                <span class="active"></span>
+              </li>
+              <li class="body__name"><a href="#">Gun Machine</a></li>
+              <li class="body__block">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16.041"
+                  height="16"
+                  viewBox="0 0 16.041 16"
+                >
+                  <path
+                    id="shopping_x5F_cart_2_"
+                    d="M15.995,14.16l-1.12-8a1.568,1.568,0,0,0-1.6-1.36h-1.28V4a3.866,3.866,0,0,0-4-4,3.961,3.961,0,0,0-4,4v.8H2.955a1.9,1.9,0,0,0-1.84,1.36l-1.12,8A1.62,1.62,0,0,0,1.595,16h12.8A1.62,1.62,0,0,0,15.995,14.16ZM5.595,4a2.357,2.357,0,0,1,2.4-2.4,2.225,2.225,0,0,1,2.4,2.4v.8h-4.8Zm7.84,10.4H2.555a.778.778,0,0,1-.8-.88l.88-6.4a.851.851,0,0,1,.8-.72h.56V8a.756.756,0,0,0,.8.8.756.756,0,0,0,.8-.8V6.4h4.8V8a.8.8,0,1,0,1.6,0V6.4h.56a.851.851,0,0,1,.8.72l.88,6.4A.741.741,0,0,1,13.435,14.4Z"
+                    transform="translate(0.026)"
+                    fill="#db9351"
+                  />
+                </svg>
+              </li>
+              <li class="body__text">
+                а почему на ноже нет ни одной царапины?
+              </li>
+              <li class="body__date">01/12/2018</li>
+              <li class="body__time">00:14</li>
+            </ul>
+            <!-- ./2 сообщение -->
+
+            <ul class="body__tr">
+              <li class="body__checkbox">
+                <div class="body__checkbox_active">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="7.088"
+                    height="5.657"
+                    viewBox="0 0 7.088 5.657"
+                  >
+                    <path
+                      id="Объединение_66"
+                      data-name="Объединение 66"
+                      d="M-1458.168,9.643l0,0L-1461,6.819l1.414-1.415,1.427,1.428L-1455.325,4l1.414,1.415-4.243,4.243Z"
+                      transform="translate(1461 -4)"
+                      fill="#fff"
+                    />
+                  </svg>
+                </div>
+              </li>
+              <li class="body__avatar">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="70"
+                  height="70"
+                  viewBox="0 0 70 70"
+                >
+                  <defs>
+                    <filter
+                      id="Эллипс_150"
+                      x="0"
+                      y="0"
+                      width="70"
+                      height="70"
+                      filterUnits="userSpaceOnUse"
+                    >
+                      <feOffset input="SourceAlpha" />
+                      <feGaussianBlur stdDeviation="5" result="blur" />
+                      <feFlood flood-opacity="0.251" />
+                      <feComposite operator="in" in2="blur" />
+                      <feComposite in="SourceGraphic" />
+                    </filter>
+                  </defs>
+                  <g
+                    id="Сгруппировать_1738"
+                    data-name="Сгруппировать 1738"
+                    transform="translate(-1736 -4039)"
+                  >
+                    <g
+                      transform="matrix(1, 0, 0, 1, 1736, 4039)"
+                      filter="url(#Эллипс_150)"
+                    >
+                      <circle
+                        id="Эллипс_150-2"
+                        data-name="Эллипс 150"
+                        cx="20"
+                        cy="20"
+                        r="20"
+                        transform="translate(15 15)"
+                        fill="#fff"
+                        opacity="0.2"
+                      />
+                    </g>
+                    <path
+                      id="profile_1_"
+                      d="M10.943,8.558A4.834,4.834,0,0,0,12.7,4.083,4.831,4.831,0,0,0,8.546.088,4.671,4.671,0,0,0,3.193,4.8,4.954,4.954,0,0,0,4.951,8.558,7.6,7.6,0,0,0,0,15.109a.777.777,0,0,0,.8.879.85.85,0,0,0,.8-.719A6.057,6.057,0,0,1,7.987,9.6a6.105,6.105,0,0,1,6.392,5.673.788.788,0,0,0,.8.719.777.777,0,0,0,.8-.879A7.7,7.7,0,0,0,10.943,8.558ZM7.987,8a3.2,3.2,0,1,1,3.2-3.2A3.205,3.205,0,0,1,7.987,8Z"
+                      transform="translate(1763.012 4065.957)"
+                      fill="#fff"
+                    />
+                  </g>
+                </svg>
+                <span></span>
+              </li>
+              <li class="body__name"><a href="#">Диана Павлова</a></li>
+              <li class="body__block">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16.041"
+                  height="16"
+                  viewBox="0 0 16.041 16"
+                >
+                  <path
+                    id="shopping_x5F_cart_2_"
+                    d="M15.995,14.16l-1.12-8a1.568,1.568,0,0,0-1.6-1.36h-1.28V4a3.866,3.866,0,0,0-4-4,3.961,3.961,0,0,0-4,4v.8H2.955a1.9,1.9,0,0,0-1.84,1.36l-1.12,8A1.62,1.62,0,0,0,1.595,16h12.8A1.62,1.62,0,0,0,15.995,14.16ZM5.595,4a2.357,2.357,0,0,1,2.4-2.4,2.225,2.225,0,0,1,2.4,2.4v.8h-4.8Zm7.84,10.4H2.555a.778.778,0,0,1-.8-.88l.88-6.4a.851.851,0,0,1,.8-.72h.56V8a.756.756,0,0,0,.8.8.756.756,0,0,0,.8-.8V6.4h4.8V8a.8.8,0,1,0,1.6,0V6.4h.56a.851.851,0,0,1,.8.72l.88,6.4A.741.741,0,0,1,13.435,14.4Z"
+                    transform="translate(0.026)"
+                    fill="#db9351"
+                  />
+                </svg>
+              </li>
+              <li class="body__text inactive">
+                нет, мне не нужно. если и вам тоже пофиг, то выб
+              </li>
+              <li class="body__date inactive">13/04/2018</li>
+              <li class="body__time inactive">14:02</li>
+            </ul>
+            <!-- ./3 сообщение -->
+
+            <ul class="body__tr active">
+              <li class="body__checkbox">
+                <div class="body__checkbox_inactive"></div>
+              </li>
+              <li class="body__avatar">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="70"
+                  height="70"
+                  viewBox="0 0 70 70"
+                >
+                  <defs>
+                    <filter
+                      id="Эллипс_150"
+                      x="0"
+                      y="0"
+                      width="70"
+                      height="70"
+                      filterUnits="userSpaceOnUse"
+                    >
+                      <feOffset input="SourceAlpha" />
+                      <feGaussianBlur stdDeviation="5" result="blur" />
+                      <feFlood flood-opacity="0.251" />
+                      <feComposite operator="in" in2="blur" />
+                      <feComposite in="SourceGraphic" />
+                    </filter>
+                  </defs>
+                  <g
+                    id="Сгруппировать_1738"
+                    data-name="Сгруппировать 1738"
+                    transform="translate(-1736 -4039)"
+                  >
+                    <g
+                      transform="matrix(1, 0, 0, 1, 1736, 4039)"
+                      filter="url(#Эллипс_150)"
+                    >
+                      <circle
+                        id="Эллипс_150-2"
+                        data-name="Эллипс 150"
+                        cx="20"
+                        cy="20"
+                        r="20"
+                        transform="translate(15 15)"
+                        fill="#fff"
+                        opacity="0.2"
+                      />
+                    </g>
+                    <path
+                      id="profile_1_"
+                      d="M10.943,8.558A4.834,4.834,0,0,0,12.7,4.083,4.831,4.831,0,0,0,8.546.088,4.671,4.671,0,0,0,3.193,4.8,4.954,4.954,0,0,0,4.951,8.558,7.6,7.6,0,0,0,0,15.109a.777.777,0,0,0,.8.879.85.85,0,0,0,.8-.719A6.057,6.057,0,0,1,7.987,9.6a6.105,6.105,0,0,1,6.392,5.673.788.788,0,0,0,.8.719.777.777,0,0,0,.8-.879A7.7,7.7,0,0,0,10.943,8.558ZM7.987,8a3.2,3.2,0,1,1,3.2-3.2A3.205,3.205,0,0,1,7.987,8Z"
+                      transform="translate(1763.012 4065.957)"
+                      fill="#fff"
+                    />
+                  </g>
+                </svg>
+                <span class="active"></span>
+              </li>
+              <li class="body__name"><a href="#">Otto Zweig</a></li>
+              <li class="body__block">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16.041"
+                  height="16"
+                  viewBox="0 0 16.041 16"
+                >
+                  <path
+                    id="shopping_x5F_cart_2_"
+                    d="M15.995,14.16l-1.12-8a1.568,1.568,0,0,0-1.6-1.36h-1.28V4a3.866,3.866,0,0,0-4-4,3.961,3.961,0,0,0-4,4v.8H2.955a1.9,1.9,0,0,0-1.84,1.36l-1.12,8A1.62,1.62,0,0,0,1.595,16h12.8A1.62,1.62,0,0,0,15.995,14.16ZM5.595,4a2.357,2.357,0,0,1,2.4-2.4,2.225,2.225,0,0,1,2.4,2.4v.8h-4.8Zm7.84,10.4H2.555a.778.778,0,0,1-.8-.88l.88-6.4a.851.851,0,0,1,.8-.72h.56V8a.756.756,0,0,0,.8.8.756.756,0,0,0,.8-.8V6.4h4.8V8a.8.8,0,1,0,1.6,0V6.4h.56a.851.851,0,0,1,.8.72l.88,6.4A.741.741,0,0,1,13.435,14.4Z"
+                    transform="translate(0.026)"
+                    fill="#db9351"
+                  />
+                </svg>
+              </li>
+              <li class="body__text">thank you! that’s great!</li>
+              <li class="body__date">01/12/2018</li>
+              <li class="body__time">00:14</li>
+            </ul>
+            <!-- ./4 сообщение -->
+
+            <ul class="body__tr">
+              <li class="body__checkbox">
+                <div class="body__checkbox_inactive"></div>
+              </li>
+              <li class="body__avatar">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="70"
+                  height="70"
+                  viewBox="0 0 70 70"
+                >
+                  <defs>
+                    <filter
+                      id="Эллипс_150"
+                      x="0"
+                      y="0"
+                      width="70"
+                      height="70"
+                      filterUnits="userSpaceOnUse"
+                    >
+                      <feOffset input="SourceAlpha" />
+                      <feGaussianBlur stdDeviation="5" result="blur" />
+                      <feFlood flood-opacity="0.251" />
+                      <feComposite operator="in" in2="blur" />
+                      <feComposite in="SourceGraphic" />
+                    </filter>
+                  </defs>
+                  <g
+                    id="Сгруппировать_1738"
+                    data-name="Сгруппировать 1738"
+                    transform="translate(-1736 -4039)"
+                  >
+                    <g
+                      transform="matrix(1, 0, 0, 1, 1736, 4039)"
+                      filter="url(#Эллипс_150)"
+                    >
+                      <circle
+                        id="Эллипс_150-2"
+                        data-name="Эллипс 150"
+                        cx="20"
+                        cy="20"
+                        r="20"
+                        transform="translate(15 15)"
+                        fill="#fff"
+                        opacity="0.2"
+                      />
+                    </g>
+                    <path
+                      id="profile_1_"
+                      d="M10.943,8.558A4.834,4.834,0,0,0,12.7,4.083,4.831,4.831,0,0,0,8.546.088,4.671,4.671,0,0,0,3.193,4.8,4.954,4.954,0,0,0,4.951,8.558,7.6,7.6,0,0,0,0,15.109a.777.777,0,0,0,.8.879.85.85,0,0,0,.8-.719A6.057,6.057,0,0,1,7.987,9.6a6.105,6.105,0,0,1,6.392,5.673.788.788,0,0,0,.8.719.777.777,0,0,0,.8-.879A7.7,7.7,0,0,0,10.943,8.558ZM7.987,8a3.2,3.2,0,1,1,3.2-3.2A3.205,3.205,0,0,1,7.987,8Z"
+                      transform="translate(1763.012 4065.957)"
+                      fill="#fff"
+                    />
+                  </g>
+                </svg>
+                <span></span>
+              </li>
+              <li class="body__name"><a href="#">Александр Анто…</a></li>
+              <li class="body__block active">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16.041"
+                  height="16"
+                  viewBox="0 0 16.041 16"
+                >
+                  <path
+                    id="shopping_x5F_cart_2_"
+                    d="M15.995,14.16l-1.12-8a1.568,1.568,0,0,0-1.6-1.36h-1.28V4a3.866,3.866,0,0,0-4-4,3.961,3.961,0,0,0-4,4v.8H2.955a1.9,1.9,0,0,0-1.84,1.36l-1.12,8A1.62,1.62,0,0,0,1.595,16h12.8A1.62,1.62,0,0,0,15.995,14.16ZM5.595,4a2.357,2.357,0,0,1,2.4-2.4,2.225,2.225,0,0,1,2.4,2.4v.8h-4.8Zm7.84,10.4H2.555a.778.778,0,0,1-.8-.88l.88-6.4a.851.851,0,0,1,.8-.72h.56V8a.756.756,0,0,0,.8.8.756.756,0,0,0,.8-.8V6.4h4.8V8a.8.8,0,1,0,1.6,0V6.4h.56a.851.851,0,0,1,.8.72l.88,6.4A.741.741,0,0,1,13.435,14.4Z"
+                    transform="translate(0.026)"
+                    fill="#db9351"
+                  />
+                </svg>
+              </li>
+              <li class="body__text inactive">
+                здравствуйте. как долго придется ждать нож кото
+              </li>
+              <li class="body__date inactive">13/04/2018</li>
+              <li class="body__time inactive">14:02</li>
+            </ul>
+            <!-- ./5 сообщение -->
+
+            <ul class="body__tr">
+              <li class="body__checkbox">
+                <div class="body__checkbox_inactive"></div>
+              </li>
+              <li class="body__avatar">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="70"
+                  height="70"
+                  viewBox="0 0 70 70"
+                >
+                  <defs>
+                    <filter
+                      id="Эллипс_150"
+                      x="0"
+                      y="0"
+                      width="70"
+                      height="70"
+                      filterUnits="userSpaceOnUse"
+                    >
+                      <feOffset input="SourceAlpha" />
+                      <feGaussianBlur stdDeviation="5" result="blur" />
+                      <feFlood flood-opacity="0.251" />
+                      <feComposite operator="in" in2="blur" />
+                      <feComposite in="SourceGraphic" />
+                    </filter>
+                  </defs>
+                  <g
+                    id="Сгруппировать_1738"
+                    data-name="Сгруппировать 1738"
+                    transform="translate(-1736 -4039)"
+                  >
+                    <g
+                      transform="matrix(1, 0, 0, 1, 1736, 4039)"
+                      filter="url(#Эллипс_150)"
+                    >
+                      <circle
+                        id="Эллипс_150-2"
+                        data-name="Эллипс 150"
+                        cx="20"
+                        cy="20"
+                        r="20"
+                        transform="translate(15 15)"
+                        fill="#fff"
+                        opacity="0.2"
+                      />
+                    </g>
+                    <path
+                      id="profile_1_"
+                      d="M10.943,8.558A4.834,4.834,0,0,0,12.7,4.083,4.831,4.831,0,0,0,8.546.088,4.671,4.671,0,0,0,3.193,4.8,4.954,4.954,0,0,0,4.951,8.558,7.6,7.6,0,0,0,0,15.109a.777.777,0,0,0,.8.879.85.85,0,0,0,.8-.719A6.057,6.057,0,0,1,7.987,9.6a6.105,6.105,0,0,1,6.392,5.673.788.788,0,0,0,.8.719.777.777,0,0,0,.8-.879A7.7,7.7,0,0,0,10.943,8.558ZM7.987,8a3.2,3.2,0,1,1,3.2-3.2A3.205,3.205,0,0,1,7.987,8Z"
+                      transform="translate(1763.012 4065.957)"
+                      fill="#fff"
+                    />
+                  </g>
+                </svg>
+                <span class="active"></span>
+              </li>
+              <li class="body__name"><a href="#">Gun Machine</a></li>
+              <li class="body__block">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16.041"
+                  height="16"
+                  viewBox="0 0 16.041 16"
+                >
+                  <path
+                    id="shopping_x5F_cart_2_"
+                    d="M15.995,14.16l-1.12-8a1.568,1.568,0,0,0-1.6-1.36h-1.28V4a3.866,3.866,0,0,0-4-4,3.961,3.961,0,0,0-4,4v.8H2.955a1.9,1.9,0,0,0-1.84,1.36l-1.12,8A1.62,1.62,0,0,0,1.595,16h12.8A1.62,1.62,0,0,0,15.995,14.16ZM5.595,4a2.357,2.357,0,0,1,2.4-2.4,2.225,2.225,0,0,1,2.4,2.4v.8h-4.8Zm7.84,10.4H2.555a.778.778,0,0,1-.8-.88l.88-6.4a.851.851,0,0,1,.8-.72h.56V8a.756.756,0,0,0,.8.8.756.756,0,0,0,.8-.8V6.4h4.8V8a.8.8,0,1,0,1.6,0V6.4h.56a.851.851,0,0,1,.8.72l.88,6.4A.741.741,0,0,1,13.435,14.4Z"
+                    transform="translate(0.026)"
+                    fill="#db9351"
+                  />
+                </svg>
+              </li>
+              <li class="body__text">
+                а почему на ноже нет ни одной царапины?
+              </li>
+              <li class="body__date">01/12/2018</li>
+              <li class="body__time">00:14</li>
+            </ul>
+            <!-- ./6 сообщение -->
+
+            <ul class="body__tr">
+              <li class="body__checkbox">
+                <div class="body__checkbox_active">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="7.088"
+                    height="5.657"
+                    viewBox="0 0 7.088 5.657"
+                  >
+                    <path
+                      id="Объединение_66"
+                      data-name="Объединение 66"
+                      d="M-1458.168,9.643l0,0L-1461,6.819l1.414-1.415,1.427,1.428L-1455.325,4l1.414,1.415-4.243,4.243Z"
+                      transform="translate(1461 -4)"
+                      fill="#fff"
+                    />
+                  </svg>
+                </div>
+              </li>
+              <li class="body__avatar">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="70"
+                  height="70"
+                  viewBox="0 0 70 70"
+                >
+                  <defs>
+                    <filter
+                      id="Эллипс_150"
+                      x="0"
+                      y="0"
+                      width="70"
+                      height="70"
+                      filterUnits="userSpaceOnUse"
+                    >
+                      <feOffset input="SourceAlpha" />
+                      <feGaussianBlur stdDeviation="5" result="blur" />
+                      <feFlood flood-opacity="0.251" />
+                      <feComposite operator="in" in2="blur" />
+                      <feComposite in="SourceGraphic" />
+                    </filter>
+                  </defs>
+                  <g
+                    id="Сгруппировать_1738"
+                    data-name="Сгруппировать 1738"
+                    transform="translate(-1736 -4039)"
+                  >
+                    <g
+                      transform="matrix(1, 0, 0, 1, 1736, 4039)"
+                      filter="url(#Эллипс_150)"
+                    >
+                      <circle
+                        id="Эллипс_150-2"
+                        data-name="Эллипс 150"
+                        cx="20"
+                        cy="20"
+                        r="20"
+                        transform="translate(15 15)"
+                        fill="#fff"
+                        opacity="0.2"
+                      />
+                    </g>
+                    <path
+                      id="profile_1_"
+                      d="M10.943,8.558A4.834,4.834,0,0,0,12.7,4.083,4.831,4.831,0,0,0,8.546.088,4.671,4.671,0,0,0,3.193,4.8,4.954,4.954,0,0,0,4.951,8.558,7.6,7.6,0,0,0,0,15.109a.777.777,0,0,0,.8.879.85.85,0,0,0,.8-.719A6.057,6.057,0,0,1,7.987,9.6a6.105,6.105,0,0,1,6.392,5.673.788.788,0,0,0,.8.719.777.777,0,0,0,.8-.879A7.7,7.7,0,0,0,10.943,8.558ZM7.987,8a3.2,3.2,0,1,1,3.2-3.2A3.205,3.205,0,0,1,7.987,8Z"
+                      transform="translate(1763.012 4065.957)"
+                      fill="#fff"
+                    />
+                  </g>
+                </svg>
+                <span></span>
+              </li>
+              <li class="body__name"><a href="#">Диана Павлова</a></li>
+              <li class="body__block">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16.041"
+                  height="16"
+                  viewBox="0 0 16.041 16"
+                >
+                  <path
+                    id="shopping_x5F_cart_2_"
+                    d="M15.995,14.16l-1.12-8a1.568,1.568,0,0,0-1.6-1.36h-1.28V4a3.866,3.866,0,0,0-4-4,3.961,3.961,0,0,0-4,4v.8H2.955a1.9,1.9,0,0,0-1.84,1.36l-1.12,8A1.62,1.62,0,0,0,1.595,16h12.8A1.62,1.62,0,0,0,15.995,14.16ZM5.595,4a2.357,2.357,0,0,1,2.4-2.4,2.225,2.225,0,0,1,2.4,2.4v.8h-4.8Zm7.84,10.4H2.555a.778.778,0,0,1-.8-.88l.88-6.4a.851.851,0,0,1,.8-.72h.56V8a.756.756,0,0,0,.8.8.756.756,0,0,0,.8-.8V6.4h4.8V8a.8.8,0,1,0,1.6,0V6.4h.56a.851.851,0,0,1,.8.72l.88,6.4A.741.741,0,0,1,13.435,14.4Z"
+                    transform="translate(0.026)"
+                    fill="#db9351"
+                  />
+                </svg>
+              </li>
+              <li class="body__text inactive">
+                нет, мне не нужно. если и вам тоже пофиг, то выб
+              </li>
+              <li class="body__date inactive">13/04/2018</li>
+              <li class="body__time inactive">14:02</li>
+            </ul>
+            <!-- ./7 сообщение -->
+
+            <ul class="body__tr">
+              <li class="body__checkbox">
+                <div class="body__checkbox_inactive"></div>
+              </li>
+              <li class="body__avatar">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  width="70"
+                  height="70"
+                  viewBox="0 0 70 70"
+                >
+                  <defs>
+                    <filter
+                      id="Эллипс_150"
+                      x="0"
+                      y="0"
+                      width="70"
+                      height="70"
+                      filterUnits="userSpaceOnUse"
+                    >
+                      <feOffset input="SourceAlpha" />
+                      <feGaussianBlur stdDeviation="5" result="blur" />
+                      <feFlood flood-opacity="0.251" />
+                      <feComposite operator="in" in2="blur" />
+                      <feComposite in="SourceGraphic" />
+                    </filter>
+                  </defs>
+                  <g
+                    id="Сгруппировать_1738"
+                    data-name="Сгруппировать 1738"
+                    transform="translate(-1736 -4039)"
+                  >
+                    <g
+                      transform="matrix(1, 0, 0, 1, 1736, 4039)"
+                      filter="url(#Эллипс_150)"
+                    >
+                      <circle
+                        id="Эллипс_150-2"
+                        data-name="Эллипс 150"
+                        cx="20"
+                        cy="20"
+                        r="20"
+                        transform="translate(15 15)"
+                        fill="#fff"
+                        opacity="0.2"
+                      />
+                    </g>
+                    <path
+                      id="profile_1_"
+                      d="M10.943,8.558A4.834,4.834,0,0,0,12.7,4.083,4.831,4.831,0,0,0,8.546.088,4.671,4.671,0,0,0,3.193,4.8,4.954,4.954,0,0,0,4.951,8.558,7.6,7.6,0,0,0,0,15.109a.777.777,0,0,0,.8.879.85.85,0,0,0,.8-.719A6.057,6.057,0,0,1,7.987,9.6a6.105,6.105,0,0,1,6.392,5.673.788.788,0,0,0,.8.719.777.777,0,0,0,.8-.879A7.7,7.7,0,0,0,10.943,8.558ZM7.987,8a3.2,3.2,0,1,1,3.2-3.2A3.205,3.205,0,0,1,7.987,8Z"
+                      transform="translate(1763.012 4065.957)"
+                      fill="#fff"
+                    />
+                  </g>
+                </svg>
+                <span class="active"></span>
+              </li>
+              <li class="body__name"><a href="#">Otto Zweig</a></li>
+              <li class="body__block">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16.041"
+                  height="16"
+                  viewBox="0 0 16.041 16"
+                >
+                  <path
+                    id="shopping_x5F_cart_2_"
+                    d="M15.995,14.16l-1.12-8a1.568,1.568,0,0,0-1.6-1.36h-1.28V4a3.866,3.866,0,0,0-4-4,3.961,3.961,0,0,0-4,4v.8H2.955a1.9,1.9,0,0,0-1.84,1.36l-1.12,8A1.62,1.62,0,0,0,1.595,16h12.8A1.62,1.62,0,0,0,15.995,14.16ZM5.595,4a2.357,2.357,0,0,1,2.4-2.4,2.225,2.225,0,0,1,2.4,2.4v.8h-4.8Zm7.84,10.4H2.555a.778.778,0,0,1-.8-.88l.88-6.4a.851.851,0,0,1,.8-.72h.56V8a.756.756,0,0,0,.8.8.756.756,0,0,0,.8-.8V6.4h4.8V8a.8.8,0,1,0,1.6,0V6.4h.56a.851.851,0,0,1,.8.72l.88,6.4A.741.741,0,0,1,13.435,14.4Z"
+                    transform="translate(0.026)"
+                    fill="#db9351"
+                  />
+                </svg>
+              </li>
+              <li class="body__text">thank you! that’s great!</li>
+              <li class="body__date">01/12/2018</li>
+              <li class="body__time">00:14</li>
+            </ul>
+            <!-- ./8 сообщение -->
+          </ul>
+          <!-- ./table__body -->
+
+          <ul class="table__foot foot">
+            <li class="foot__counter"><a href="#">1</a></li>
+            <li class="foot__counter active"><a href="#">2</a></li>
+            <li class="foot__counter"><a href="#">3</a></li>
+            <li class="foot__counter"><a href="#">4</a></li>
+            <li class="foot__counter"><a href="#">5</a></li>
+            <li class="foot__counter"><a href="#">6</a></li>
+            <li class="foot__counter"><a href="#">7</a></li>
+            <li class="foot__counter"><a href="#">8</a></li>
+            <li class="foot__counter"><a href="#">9</a></li>
+            <li class="foot__counter"><a href="#">10</a></li>
+            <li class="foot__counter"><a href="#">...</a></li>
+            <li class="foot__counter"><a href="#">123</a></li>
+            <li class="foot__counter">
+              <a href="#">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="50.208"
+                  height="14.848"
+                  viewBox="0 0 50.208 14.848"
+                >
+                  <path
+                    id="Объединение_26"
+                    data-name="Объединение 26"
+                    d="M16354.43,20765.141l5.858-5.863H16312v-1h48.295l-6.571-6.572.7-.7,7.072,7.066.709.709-7.072,7.072Z"
+                    transform="translate(-16312.003 -20751.002)"
+                    fill="#fff"
+                  />
+                </svg>
+              </a>
+            </li>
+          </ul>
+          <!-- ./table__foot -->
+        </div>
+      </section>
+      <!-- ./messages -->
+    </main>
+    <!-- Main end -->
+  </body>
+</html>
